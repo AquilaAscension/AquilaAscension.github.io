@@ -73,13 +73,13 @@ header img {
 		justify-content: top;
 		align-items: center;
 		text-transform: uppercase;
-		border: 5px solid red;
-		position: fixed;
+		position: absolute;
 		top: 150px;
 		height: 250px;
 		padding: 15px;
 		animation-name: body;
 		animation-duration: 5s;
+		z-index: 2;
 }
 
 	aside h2 {
@@ -105,5 +105,5 @@ aside ul li {
 		position: absolute;
 		top: 100px;
 		left: 30%;
-		padding: 20px;
+		padding: 100px;
 }
