@@ -1,0 +1,24 @@
+{
+  "name": "aquilaascension.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AquilaAscension/AquilaAscension.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AquilaAscension/AquilaAscension.github.io/issues"
+  },
+  "homepage": "https://github.com/AquilaAscension/AquilaAscension.github.io#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}
