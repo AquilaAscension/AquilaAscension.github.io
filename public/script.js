@@ -72,3 +72,71 @@ document.getElementById("add-drink-form").addEventListener("submit", (e) => {
         "Failed to add drink.";
     });
 });
+
+// Load personnel
+function loadPersonnel() {
+  fetch("/personnel")
+    .then((res) => res.json())
+    .then((people) => {
+      const list = document.getElementById("personnel-list");
+      list.innerHTML = "";
+      people.forEach((person) => {
+        const item = document.createElement("li");
+        item.innerHTML = `
+            <strong>${person.Name}</strong><br>
+            Email: ${person.Email}<br>
+            Phone: ${person.Phone}<br>
+            Zone: ${person.Zone}<br>
+            <button data-id="${person.PersonID}">🗑 Remove</button>
+        `;
+        list.appendChild(item);
+      });
+      document.querySelectorAll("#personnel-list button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-id");
+          fetch(`/personnel/${id}`, { method: "DELETE" })
+            .then(() => loadPersonnel())
+            .catch((err) => console.error("Delete failed:", err));
+        });
+      });
+    });
+}
+
+// Add new personnel
+document
+  .getElementById("add-personnel-form")
+  .addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const Name = document.getElementById("p-name").value;
+    const Email = document.getElementById("p-email").value;
+    const Phone = document.getElementById("p-phone").value;
+    const Zone = document.getElementById("p-zone").value;
+
+    fetch("/personnel", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ Name, Email, Phone, Zone }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        document.getElementById("personnel-message").textContent =
+          "Personnel added!";
+        loadPersonnel(); // Refresh list
+      })
+      .catch((err) => {
+        console.error("Add personnel failed:", err);
+        document.getElementById("personnel-message").textContent =
+          "Error adding personnel.";
+      });
+  });
+
+// Load personnel when the section is shown
+const observer = new MutationObserver(() => {
+  if (document.getElementById("personnel-section").style.display === "block") {
+    loadPersonnel();
+  }
+});
+observer.observe(document.getElementById("personnel-section"), {
+  attributes: true,
+});

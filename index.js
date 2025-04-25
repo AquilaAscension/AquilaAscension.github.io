@@ -36,6 +36,9 @@ app.use("/drinks", drinksRoute);
 const salesRoute = require("./routes/sales")(db);
 app.use("/sales", salesRoute);
 
+const personnelRoute = require("./routes/personnel")(db);
+app.use("/personnel", personnelRoute);
+
 // Sample route
 app.get("/", (req, res) => {
   res.send("Smart Vending Machine backend is running!");

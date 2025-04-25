@@ -60,10 +60,24 @@
     </section>
   </section>
 
-  <!-- Empty placeholders for other pages -->
   <section id="personnel-section" style="display: none">
-    <h1>Personnel</h1>
+    <h1>Personnel Management</h1>
+
+    <ul id="personnel-list"></ul>
+
+    <hr />
+    <h2>Add New Personnel</h2>
+    <form id="add-personnel-form">
+      <input type="text" id="p-name" placeholder="Name" required />
+      <input type="email" id="p-email" placeholder="Email" required />
+      <input type="text" id="p-phone" placeholder="Phone" required />
+      <input type="text" id="p-zone" placeholder="Zone" required />
+      <button type="submit">Add Personnel</button>
+    </form>
+    <p id="personnel-message"></p>
   </section>
+
+  <!-- Empty placeholders for other pages -->
   <section id="requests-section" style="display: none">
     <h1>Requests</h1>
   </section>
