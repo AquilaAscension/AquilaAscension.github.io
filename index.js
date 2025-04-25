@@ -29,6 +29,9 @@ if (!fs.existsSync(dbPath)) {
 // Re-open db connection for API usage
 const db = new sqlite3.Database(dbPath);
 
+const drinksRoute = require("./routes/drinks")(db);
+app.use("/drinks", drinksRoute);
+
 // Sample route
 app.get("/", (req, res) => {
   res.send("Smart Vending Machine backend is running!");
