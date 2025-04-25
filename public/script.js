@@ -6,11 +6,18 @@ fetch("/drinks")
 
     drinks.forEach((drink) => {
       const item = document.createElement("li");
+      const isLow = drink.CurrentStock <= drink.MinThreshold;
+
       item.innerHTML = `
-        <strong>${drink.Name}</strong> — $${drink.Price} 
-        (${drink.CurrentStock}/${drink.Capacity})
-        <button data-id="${drink.DrinkID}">🗑 Remove</button>
-      `;
+          <strong>${drink.Name}</strong> — $${drink.Price} 
+          (${drink.CurrentStock}/${drink.Capacity})
+          <button data-id="${drink.DrinkID}">🗑 Remove</button>
+        `;
+
+      if (isLow) {
+        item.classList.add("low-stock");
+      }
+
       list.appendChild(item);
     });
 
