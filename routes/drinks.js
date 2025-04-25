@@ -33,5 +33,14 @@ module.exports = (db) => {
     );
   });
 
+  // DELETE a drink by ID
+  router.delete("/:id", (req, res) => {
+    const id = req.params.id;
+    db.run("DELETE FROM Drinks WHERE DrinkID = ?", [id], function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ message: `Drink ${id} deleted`, changes: this.changes });
+    });
+  });
+
   return router;
 };

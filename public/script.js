@@ -2,10 +2,27 @@ fetch("/drinks")
   .then((response) => response.json())
   .then((drinks) => {
     const list = document.getElementById("drinks-list");
+    list.innerHTML = ""; // Clear list before repopulating
+
     drinks.forEach((drink) => {
       const item = document.createElement("li");
-      item.textContent = `${drink.Name} — $${drink.Price} (${drink.CurrentStock}/${drink.Capacity})`;
+      item.innerHTML = `
+        <strong>${drink.Name}</strong> — $${drink.Price} 
+        (${drink.CurrentStock}/${drink.Capacity})
+        <button data-id="${drink.DrinkID}">🗑 Remove</button>
+      `;
       list.appendChild(item);
+    });
+
+    // Attach delete handlers after items are added
+    document.querySelectorAll("#drinks-list button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-id");
+        fetch(`/drinks/${id}`, { method: "DELETE" })
+          .then((res) => res.json())
+          .then(() => location.reload())
+          .catch((err) => console.error("Delete failed:", err));
+      });
     });
   })
   .catch((error) => {
