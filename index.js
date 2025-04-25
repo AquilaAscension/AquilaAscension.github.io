@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
+app.use(express.static("public"));
 const port = 3000;
 
 // Middleware to parse JSON
@@ -31,6 +32,9 @@ const db = new sqlite3.Database(dbPath);
 
 const drinksRoute = require("./routes/drinks")(db);
 app.use("/drinks", drinksRoute);
+
+const salesRoute = require("./routes/sales")(db);
+app.use("/sales", salesRoute);
 
 // Sample route
 app.get("/", (req, res) => {
