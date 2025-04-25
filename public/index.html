@@ -13,6 +13,24 @@
       <ul id="drinks-list"></ul>
     </div>
 
+    <hr />
+    <h2>Add a New Drink</h2>
+    <form id="add-drink-form">
+      <input type="text" id="name" placeholder="Drink Name" required />
+      <input
+        type="number"
+        id="price"
+        placeholder="Price ($)"
+        step="0.01"
+        required
+      />
+      <input type="number" id="current" placeholder="Current Stock" required />
+      <input type="number" id="min" placeholder="Min Threshold" required />
+      <input type="number" id="capacity" placeholder="Max Capacity" required />
+      <button type="submit">Add Drink</button>
+    </form>
+    <p id="form-message"></p>
+
     <script src="script.js"></script>
   </body>
 </html>
