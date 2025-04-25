@@ -1,6 +1,16 @@
+function showSection(id) {
+  document.querySelectorAll("section").forEach((sec) => {
+    sec.style.display = sec.id === `${id}-section` ? "block" : "none";
+  });
+}
+
 fetch("/drinks")
   .then((response) => response.json())
   .then((drinks) => {
+    document.getElementById("total-drinks").textContent = drinks.length;
+    const low = drinks.filter((d) => d.CurrentStock <= d.MinThreshold).length;
+    document.getElementById("low-stock-count").textContent = low;
+
     const list = document.getElementById("drinks-list");
     list.innerHTML = ""; // Clear list before repopulating
 

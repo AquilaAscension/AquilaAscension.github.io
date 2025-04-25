@@ -40,3 +40,16 @@ form button {
   border-left: 6px solid red;
   background-color: #ffe6e6;
 }
+
+nav {
+  margin-bottom: 1rem;
+}
+nav button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+section {
+  margin-top: 1rem;
+}

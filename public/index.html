@@ -1,36 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Vending Machine</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>Smart Vending Machine</h1>
-    <div id="drinks-container">
-      <h2>Available Drinks</h2>
-      <ul id="drinks-list"></ul>
+<body>
+  <nav>
+    <button onclick="showSection('dashboard')">Dashboard</button>
+    <button onclick="showSection('drinks')">Drinks</button>
+    <button onclick="showSection('personnel')">Personnel</button>
+    <button onclick="showSection('requests')">Requests</button>
+    <button onclick="showSection('logs')">Logs</button>
+  </nav>
+
+  <!-- Sections -->
+  <section id="dashboard-section">
+    <h1>Dashboard</h1>
+    <div id="dashboard-summary">
+      <p><strong>Total Drinks:</strong> <span id="total-drinks">0</span></p>
+      <p>
+        <strong>Low Stock Drinks:</strong> <span id="low-stock-count">0</span>
+      </p>
     </div>
+    <div>
+      <h2>Recent Logs (Coming Soon)</h2>
+      <ul id="recent-logs">
+        <li>No logs yet.</li>
+      </ul>
+    </div>
+  </section>
 
-    <hr />
-    <h2>Add a New Drink</h2>
-    <form id="add-drink-form">
-      <input type="text" id="name" placeholder="Drink Name" required />
-      <input
-        type="number"
-        id="price"
-        placeholder="Price ($)"
-        step="0.01"
-        required
-      />
-      <input type="number" id="current" placeholder="Current Stock" required />
-      <input type="number" id="min" placeholder="Min Threshold" required />
-      <input type="number" id="capacity" placeholder="Max Capacity" required />
-      <button type="submit">Add Drink</button>
-    </form>
-    <p id="form-message"></p>
+  <section id="drinks-section" style="display: none">
+    <section id="drinks-section" style="display: none">
+      <h1>Drinks Management</h1>
 
-    <script src="script.js"></script>
-  </body>
-</html>
+      <ul id="drinks-list"></ul>
+
+      <hr />
+      <h2>Add a New Drink</h2>
+      <form id="add-drink-form">
+        <input type="text" id="name" placeholder="Drink Name" required />
+        <input
+          type="number"
+          id="price"
+          placeholder="Price ($)"
+          step="0.01"
+          required
+        />
+        <input
+          type="number"
+          id="current"
+          placeholder="Current Stock"
+          required
+        />
+        <input type="number" id="min" placeholder="Min Threshold" required />
+        <input
+          type="number"
+          id="capacity"
+          placeholder="Max Capacity"
+          required
+        />
+        <button type="submit">Add Drink</button>
+      </form>
+      <p id="form-message"></p>
+    </section>
+  </section>
+
+  <!-- Empty placeholders for other pages -->
+  <section id="personnel-section" style="display: none">
+    <h1>Personnel</h1>
+  </section>
+  <section id="requests-section" style="display: none">
+    <h1>Requests</h1>
+  </section>
+  <section id="logs-section" style="display: none">
+    <h1>Machine Logs</h1>
+  </section>
+
+  <script src="script.js"></script>
+</body>
